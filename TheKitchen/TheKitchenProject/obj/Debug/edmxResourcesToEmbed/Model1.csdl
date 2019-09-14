@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KitchenModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KitchenDBcontext" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Category" EntityType="KitchenModel.tbl_Category" />
+    <EntitySet Name="tbl_Kitchen" EntityType="KitchenModel.tbl_Kitchen" />
+    <AssociationSet Name="FK__tbl_Kitch__Categ__1273C1CD" Association="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Kitchen" EntitySet="tbl_Kitchen" />
+    </AssociationSet>
+    <FunctionImport Name="Sp_Display" ReturnType="Collection(KitchenModel.Sp_Display_Result)">
+      <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Select" ReturnType="Collection(KitchenModel.Sp_Select_Result)">
+      <Parameter Name="catid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Price" ReturnType="Collection(KitchenModel.Sp_Price_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="tbl_Login" EntityType="KitchenModel.tbl_Login" />
+    <FunctionImport Name="SP_Login" ReturnType="Collection(String)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="tbl_Kitchen" Relationship="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD" FromRole="tbl_Category" ToRole="tbl_Kitchen" />
+  </EntityType>
+  <EntityType Name="tbl_Kitchen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Ingredients" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Specialnotes" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="tbl_Category" Relationship="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD" FromRole="tbl_Kitchen" ToRole="tbl_Category" />
+  </EntityType>
+  <Association Name="FK__tbl_Kitch__Categ__1273C1CD">
+    <End Role="tbl_Category" Type="KitchenModel.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_Kitchen" Type="KitchenModel.tbl_Kitchen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Kitchen">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Sp_Display_Result">
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Ingredients" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Specialnotes" Nullable="true" MaxLength="300" />
+    <Property Type="Int32" Name="price" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Sp_Select_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="Sp_Price_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="price" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="tbl_Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Username" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

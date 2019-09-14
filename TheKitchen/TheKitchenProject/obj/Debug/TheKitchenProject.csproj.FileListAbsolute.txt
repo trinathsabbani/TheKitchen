@@ -1,0 +1,7 @@
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\bin\TheKitchenProject.dll
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\bin\TheKitchenProject.pdb
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\bin\EntityFramework.dll
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\bin\EntityFramework.xml
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.csprojResolveAssemblyReference.cache
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.dll
+c:\users\vishalsabbani\desktop\anoop\anoop mini\documents\visual studio 2012\Projects\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.pdb

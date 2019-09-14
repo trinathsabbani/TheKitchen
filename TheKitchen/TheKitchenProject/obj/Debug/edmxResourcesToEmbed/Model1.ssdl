@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KitchenModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="KitchenModelStoreContainer">
+    <EntitySet Name="tbl_Category" EntityType="KitchenModel.Store.tbl_Category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_Kitchen" EntityType="KitchenModel.Store.tbl_Kitchen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tbl_Login" EntityType="KitchenModel.Store.tbl_Login" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__tbl_Kitch__Categ__1273C1CD" Association="KitchenModel.Store.FK__tbl_Kitch__Categ__1273C1CD">
+      <End Role="tbl_Category" EntitySet="tbl_Category" />
+      <End Role="tbl_Kitchen" EntitySet="tbl_Kitchen" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tbl_Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Kitchen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+    <Property Name="Ingredients" Type="varchar" MaxLength="100" />
+    <Property Name="Specialnotes" Type="varchar" MaxLength="300" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="Price" Type="int" />
+  </EntityType>
+  <EntityType Name="tbl_Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="varchar" MaxLength="200" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK__tbl_Kitch__Categ__1273C1CD">
+    <End Role="tbl_Category" Type="KitchenModel.Store.tbl_Category" Multiplicity="0..1" />
+    <End Role="tbl_Kitchen" Type="KitchenModel.Store.tbl_Kitchen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tbl_Kitchen">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Sp_Display" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Price" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="catid" Type="int" Mode="In" />
+  </Function>
+</Schema>

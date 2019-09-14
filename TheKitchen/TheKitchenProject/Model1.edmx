@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KitchenModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="KitchenModelStoreContainer">
+          <EntitySet Name="tbl_Category" EntityType="KitchenModel.Store.tbl_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Kitchen" EntityType="KitchenModel.Store.tbl_Kitchen" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Login" EntityType="KitchenModel.Store.tbl_Login" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__tbl_Kitch__Categ__1273C1CD" Association="KitchenModel.Store.FK__tbl_Kitch__Categ__1273C1CD">
+            <End Role="tbl_Category" EntitySet="tbl_Category" />
+            <End Role="tbl_Kitchen" EntitySet="tbl_Kitchen" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Kitchen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Ingredients" Type="varchar" MaxLength="100" />
+          <Property Name="Specialnotes" Type="varchar" MaxLength="300" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__tbl_Kitch__Categ__1273C1CD">
+          <End Role="tbl_Category" Type="KitchenModel.Store.tbl_Category" Multiplicity="0..1" />
+          <End Role="tbl_Kitchen" Type="KitchenModel.Store.tbl_Kitchen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Kitchen">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Sp_Display" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_Price" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_Select" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="catid" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KitchenModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KitchenDBcontext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Category" EntityType="KitchenModel.tbl_Category" />
+          <EntitySet Name="tbl_Kitchen" EntityType="KitchenModel.tbl_Kitchen" />
+          <AssociationSet Name="FK__tbl_Kitch__Categ__1273C1CD" Association="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD">
+            <End Role="tbl_Category" EntitySet="tbl_Category" />
+            <End Role="tbl_Kitchen" EntitySet="tbl_Kitchen" />
+          </AssociationSet>
+          <FunctionImport Name="Sp_Display" ReturnType="Collection(KitchenModel.Sp_Display_Result)">
+          <Parameter Name="CategoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Select" ReturnType="Collection(KitchenModel.Sp_Select_Result)">
+          <Parameter Name="catid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_Price" ReturnType="Collection(KitchenModel.Sp_Price_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="tbl_Login" EntityType="KitchenModel.tbl_Login" />
+          <FunctionImport Name="SP_Login" ReturnType="Collection(String)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="tbl_Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="tbl_Kitchen" Relationship="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD" FromRole="tbl_Category" ToRole="tbl_Kitchen" />
+        </EntityType>
+        <EntityType Name="tbl_Kitchen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ingredients" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Specialnotes" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="tbl_Category" Relationship="KitchenModel.FK__tbl_Kitch__Categ__1273C1CD" FromRole="tbl_Kitchen" ToRole="tbl_Category" />
+        </EntityType>
+        <Association Name="FK__tbl_Kitch__Categ__1273C1CD">
+          <End Role="tbl_Category" Type="KitchenModel.tbl_Category" Multiplicity="0..1" />
+          <End Role="tbl_Kitchen" Type="KitchenModel.tbl_Kitchen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tbl_Kitchen">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Sp_Display_Result">
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Ingredients" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Specialnotes" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="price" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Sp_Select_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Sp_Price_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="price" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="tbl_Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KitchenModelStoreContainer" CdmEntityContainer="KitchenDBcontext">
+          <EntitySetMapping Name="tbl_Category">
+            <EntityTypeMapping TypeName="KitchenModel.tbl_Category">
+              <MappingFragment StoreEntitySet="tbl_Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Kitchen">
+            <EntityTypeMapping TypeName="KitchenModel.tbl_Kitchen">
+              <MappingFragment StoreEntitySet="tbl_Kitchen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+                <ScalarProperty Name="Specialnotes" ColumnName="Specialnotes" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Display" FunctionName="KitchenModel.Store.Sp_Display">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KitchenModel.Sp_Display_Result">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Ingredients" ColumnName="Ingredients" />
+                <ScalarProperty Name="Specialnotes" ColumnName="Specialnotes" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Select" FunctionName="KitchenModel.Store.Sp_Select">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KitchenModel.Sp_Select_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_Price" FunctionName="KitchenModel.Store.Sp_Price">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KitchenModel.Sp_Price_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_Login">
+            <EntityTypeMapping TypeName="KitchenModel.tbl_Login">
+              <MappingFragment StoreEntitySet="tbl_Login">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Login" FunctionName="KitchenModel.Store.SP_Login" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
