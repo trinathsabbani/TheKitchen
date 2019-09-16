@@ -13,3 +13,11 @@ C:\Users\Santosh Sir\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\En
 C:\Users\Santosh Sir\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.csprojResolveAssemblyReference.cache
 C:\Users\Santosh Sir\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.dll
 C:\Users\Santosh Sir\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.pdb
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\TheKitchenProject.dll.config
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\TheKitchenProject.dll
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\TheKitchenProject.pdb
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\EntityFramework.dll
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\bin\EntityFramework.xml
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.csprojResolveAssemblyReference.cache
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.dll
+C:\Users\vishalsabbani\Source\Repos\TheKitchen\TheKitchen\TheKitchenProject\obj\Debug\TheKitchenProject.pdb
